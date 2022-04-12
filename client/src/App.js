@@ -3,7 +3,7 @@ import "./App.css";
 import io from "socket.io-client";
 import { Button, TextField, Grid, Paper, Typography } from "@material-ui/core";
 import { Chats } from "./Chats";
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("https://n-chat-app-server.herokuapp.com/");
 export const App = () => {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
