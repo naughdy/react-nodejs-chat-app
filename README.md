@@ -1,4 +1,6 @@
 # Getting Started with Create React App
+This Project is a basic example of client and server for chat functionality.
+
 Live Project Website : https://react-nodejs-n-chat-app.netlify.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
