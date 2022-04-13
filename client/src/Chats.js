@@ -43,6 +43,7 @@ export const Chats = ({ socket, username, room }) => {
 
   useEffect(() => {
     socket.on("recieve_message", (data) => {
+      console.log("message recieved", data);
       setMessageList((prev) => [...prev, data]);
     });
   }, [socket]);
@@ -58,9 +59,11 @@ export const Chats = ({ socket, username, room }) => {
           ":" +
           new Date(Date.now()).getMinutes(),
       };
-      await socket.emit("send_message", messageData);
-      setMessageList((prev) => [...prev, messageData]);
-      setMessage("");
+      socket.emit("send_message", messageData).then(() => {
+        console.log("message sent");
+        setMessageList((prev) => [...prev, messageData]);
+        setMessage("");
+      });
     }
   };
 
