@@ -82,7 +82,10 @@ export const App = () => {
           </Grid>
         </Grid>
       ) : (
-        <Chats username={username} room={room} socket={socket} />
+        <>
+          <h1>{room}</h1>
+          <Chats username={username} room={room} socket={socket} />
+        </>
       )}
     </div>
   );
