@@ -10,11 +10,9 @@ export const App = () => {
   const [showChat, setShowChat] = useState(false);
 
   const joinRoom = async () => {
-    if (username !== "" && room !== "") {
-      console.log("coming here", room);
-      await socket.emit("join_room", room);
-      setShowChat(true);
-    }
+    console.log("coming here", room);
+    await socket.emit("join_room", room);
+    setShowChat(true);
   };
   console.log("show chat", showChat);
 
@@ -41,45 +39,43 @@ export const App = () => {
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <form handleSubmit={joinRoom}>
-                    <Grid container direction="column" spacing={2}>
-                      <Grid item>
-                        <TextField
-                          type="text"
-                          placeholder="Name"
-                          fullWidth
-                          name="name"
-                          variant="outlined"
-                          value={username}
-                          onChange={(event) => setUsername(event.target.value)}
-                          required
-                          autoFocus
-                        />
-                      </Grid>
-                      <Grid item>
-                        <TextField
-                          type="text"
-                          placeholder="Room"
-                          fullWidth
-                          name="room"
-                          value={room}
-                          onChange={(event) => setRoom(event.target.value)}
-                          variant="outlined"
-                          required
-                        />
-                      </Grid>
-                      <Grid item>
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          type="submit"
-                          className="button-block"
-                        >
-                          Submit
-                        </Button>
-                      </Grid>
+                  <Grid container direction="column" spacing={2}>
+                    <Grid item>
+                      <TextField
+                        type="text"
+                        placeholder="Name"
+                        fullWidth
+                        name="name"
+                        variant="outlined"
+                        value={username}
+                        onChange={(event) => setUsername(event.target.value)}
+                        required
+                        autoFocus
+                      />
                     </Grid>
-                  </form>
+                    <Grid item>
+                      <TextField
+                        type="text"
+                        placeholder="Room"
+                        fullWidth
+                        name="room"
+                        value={room}
+                        onChange={(event) => setRoom(event.target.value)}
+                        variant="outlined"
+                        required
+                      />
+                    </Grid>
+                    <Grid item>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={joinRoom}
+                        className="button-block"
+                      >
+                        Submit
+                      </Button>
+                    </Grid>
+                  </Grid>
                 </Grid>
               </Paper>
             </Grid>
