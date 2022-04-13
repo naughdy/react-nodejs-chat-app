@@ -26,9 +26,9 @@ io.on("connection", (socket) => {
     console.log("User", socket.id, "Joined Room", data);
   });
 
-  socket.on("send_message", (data) => {
-    console.log(data);
-    socket.to(data.room).emit("recieve_message", data);
+  socket.on("send_message", async (data) => {
+    console.log("message data sent from", data.author, " : ", data);
+    await socket.to(data.room).emit("recieve_message", data);
   });
 
   socket.on("disconnect", () => {
