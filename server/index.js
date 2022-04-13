@@ -6,6 +6,10 @@ const { Server } = require("socket.io");
 
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send("Server Started");
+});
+
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -32,6 +36,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(5000, () => {
+server.listen(process.env.port || 5000, () => {
   console.log("server running");
 });
