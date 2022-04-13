@@ -3,6 +3,17 @@ Live Project Website : https://react-nodejs-n-chat-app.netlify.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+In server, if you are running locally, change in index.js: 
+const io = new Server(server, {
+  cors: {
+    origin: "https://react-nodejs-n-chat-app.netlify.app/", ----> "http://localhost:3000"
+    method: ["GET", "POST"],
+  },
+});
+
+In client, if you are working locaaly, change in App.js:
+const socket = io.connect("https://n-chat-app-server.herokuapp.com/"); ----> "http://localhost:5000"
+
 ## Available Scripts
 
 In the project directory, you can run:
