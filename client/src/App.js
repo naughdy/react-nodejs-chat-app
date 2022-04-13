@@ -10,11 +10,9 @@ export const App = () => {
   const [showChat, setShowChat] = useState(false);
 
   const joinRoom = async () => {
-    console.log("coming here", room);
     await socket.emit("join_room", room);
     setShowChat(true);
   };
-  console.log("show chat", showChat);
 
   return (
     <div>

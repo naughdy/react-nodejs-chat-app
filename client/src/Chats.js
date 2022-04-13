@@ -59,8 +59,8 @@ export const Chats = ({ socket, username, room }) => {
           new Date(Date.now()).getMinutes(),
       };
       await socket.emit("send_message", messageData);
-      setMessage("");
       setMessageList((prev) => [...prev, messageData]);
+      setMessage("");
     }
   };
 
