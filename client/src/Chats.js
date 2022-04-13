@@ -59,13 +59,13 @@ export const Chats = ({ socket, username, room }) => {
           ":" +
           new Date(Date.now()).getMinutes(),
       };
-      socket.emit("send_message", messageData).then(() => {
-        console.log("message sent");
-        setMessageList((prev) => [...prev, messageData]);
-        setMessage("");
-      });
+      await socket.emit("send_message", messageData);
+      console.log("message sent");
+      setMessageList((prev) => [...prev, messageData]);
+      setMessage("");
     }
   };
+  console.log("message list", messageList);
 
   const SendersBubble = ({ content, id }) => {
     return (
