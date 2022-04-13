@@ -9,13 +9,14 @@ export const App = () => {
   const [room, setRoom] = useState("");
   const [showChat, setShowChat] = useState(false);
 
-  const joinRoom = () => {
+  const joinRoom = async () => {
     if (username !== "" && room !== "") {
       console.log("coming here", room);
-      socket.emit("join_room", room);
+      await socket.emit("join_room", room);
       setShowChat(true);
     }
   };
+  console.log("show chat", showChat);
 
   return (
     <div>
